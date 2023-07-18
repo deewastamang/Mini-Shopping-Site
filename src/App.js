@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Router from './Router'
+import { ThemeProvider } from 'styled-components'
+import { theme } from './components/styles/theme'
+import GlobalStyle from './components/styles/GlobalStyle'
+import { calculateTotal } from './features/slice/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
-function App() {
+
+
+export default function App() {
+  const cartItems = useSelector(item => item.cart.cartItems)
+  const total = useSelector(item => item.cart.total)
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(calculateTotal());
+    console.log('total', total)
+  },[cartItems])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router />
+      </ThemeProvider>
     </div>
-  );
+  )
 }
-
-export default App;
