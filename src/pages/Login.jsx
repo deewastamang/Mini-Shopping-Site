@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../features/slice/loginSlice';
 
 
-
 const LoginPageStyled = styled.div`
     width: 100vw;
     height: 80vh;
@@ -113,23 +112,6 @@ export default function Login() {
         } else {
             setError('User does not exist')
         }
-        
-        
-        // const registeredUser = localStorage.getItem('user');
-        // if(registeredUser) {
-        //     const user = JSON.parse(registeredUser);
-        //     const {email: registeredEmail, password: registeredPassword,name} = user;
-
-        //     if(email === registeredEmail && password === registeredPassword) {
-        //             setError('');
-        //             localStorage.setItem('loggedin', true);
-        //             navigate(`/project/products/?name=${name}`, {replace: true});
-        //     } else {
-        //         setError('Invalid credentials')
-        //     }
-        // } else {
-        //     setError('User does not exist')
-        // }
 
       }
 
